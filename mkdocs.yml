@@ -77,7 +77,6 @@ nav:
       - Batching Operations: 01-common-patterns/batching-ops.md
     - Compiler-Level Optimization and Tuning:
       - Leveraging Compiler Optimization Flags: 01-common-patterns/comp-flags.md
-      - Stack Allocations and Escape Analysis: 01-common-patterns/stack-alloc.md
 
 markdown_extensions:
   - toc:
