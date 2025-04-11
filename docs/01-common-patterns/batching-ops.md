@@ -63,6 +63,8 @@ func (b *Batcher[T]) Add(item T) {
 }
 
 func (b *Batcher[T]) flushNow() {
+    b.mu.Lock()
+    defer b.mu.Unlock()
     if len(b.buffer) == 0 {
         return
     }
