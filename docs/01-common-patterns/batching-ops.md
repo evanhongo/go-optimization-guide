@@ -63,8 +63,6 @@ func (b *Batcher[T]) Add(item T) {
 }
 
 func (b *Batcher[T]) flushNow() {
-    b.mu.Lock()
-    defer b.mu.Unlock()
     if len(b.buffer) == 0 {
         return
     }
@@ -72,6 +70,9 @@ func (b *Batcher[T]) flushNow() {
     b.buffer = b.buffer[:0]
 }
 ```
+
+!!! warning
+    This batcher implementation expects that you will never call `Batcher.Add(...)` from your `flush()` function. We have this limitation because Go mutexes are [**not** recursive](https://stackoverflow.com/questions/14670979/recursive-locking-in-go).
 
 This batcher works with any data type, making it a flexible solution for aggregating logs, metrics, database writes, or other grouped operations. Internally, the buffer acts as a queue that accumulates items until a flush threshold is reached. The use of `sync.Mutex` ensures that `Add()` and `flushNow()` are safe for concurrent access, which is necessary in most real-world systems where multiple goroutines may write to the batcher.
 
