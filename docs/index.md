@@ -25,6 +25,9 @@ Each pattern is grounded in practical use cases, with benchmarks and examples yo
 
 ## :material-progress-check: What’s Coming Next
 
+!!! info
+	WIP is under [networking-go](https://github.com/astavonin/go-optimization-guide/tree/networking-go) branch.
+
 ### High-Performance Networking in Go
 
 In our upcoming deep dive into networking, we'll focus on building high-throughput network services with Go’s standard library and beyond. This includes:
